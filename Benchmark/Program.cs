@@ -8,21 +8,21 @@ public class Program
 {
     static void Main(string[] args)
     {
-        var summary = BenchmarkRunner.Run<MyBenchmark>();
+        var summary = BenchmarkRunner.Run<MyBenchmarkRead>();
     }
     //[SimpleJob(RunStrategy.ColdStart, iterationCount: 100)]
     [MinColumn, MaxColumn, MeanColumn, MedianColumn]
-    public class MyBenchmark
+    public class MyBenchmarkRead
     {
         private readonly ICache redis;
         private readonly ICache garnet;
         int randomKey;
 
-        public MyBenchmark()
+        public MyBenchmarkRead()
         {
             redis = new RedisCache();
             garnet = new GarnetRedisClientCache();
-            randomKey = new Random(42).Next(0, 2_00_000);
+            randomKey = new Random().Next(0, 1_00_000);
         }
 
         [Benchmark]
