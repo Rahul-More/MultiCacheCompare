@@ -14,6 +14,12 @@ namespace MutliCacheCompare
 
         [MemoryPackOrder(2)]
         public Guid Unique { get; set; }
+
+        [MemoryPackOrder(3)]
+        public string Data { get; set; } = default!;
+
+        [MemoryPackOrder(4)]
+        public int Size { get; set; }
     }
 
 }

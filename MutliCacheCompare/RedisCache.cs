@@ -14,18 +14,18 @@ namespace MutliCacheCompare
         public Task AddValue(UserPacked data)
         {
             byte[] bytes = MemoryPackSerializer.Serialize(data);
-            return database.StringSetAsync(BuildKey(data.Id), bytes);
+            return database.StringSetAsync(BuildKey(data.Id, data.Size), bytes);
         }
 
-        public string BuildKey(int key) => $"{ICache._key}.{key}";
+        public string BuildKey(int key, int size) => $"{ICache._key}.{size}.{key}";
 
-        public async Task<UserPacked?> GetValue(int id)
+        public async Task<UserPacked?> GetValue(int id, int size)
         {
-            var bytes = await database.StringGetAsync(BuildKey(id));
+            byte[]? bytes = await database.StringGetAsync(BuildKey(id, size));
 
-            if (bytes.HasValue)
+            if (bytes is not null)
             {
-                return MemoryPackSerializer.Deserialize<UserPacked>((byte[])bytes);
+                return MemoryPackSerializer.Deserialize<UserPacked>(bytes);
             }
             return null;
         }

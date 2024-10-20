@@ -9,7 +9,7 @@ namespace MutliCacheCompare
     {
         public const string _key = "User_cache";
         public Task AddValue(UserPacked data);
-        public Task<UserPacked?> GetValue(int id);
-        string BuildKey(int key);
+        public Task<UserPacked?> GetValue(int key,int size);
+        string BuildKey(int key, int size);
     }
 }

@@ -13,17 +13,17 @@ namespace MutliCacheCompare
             var gridConnection = GridConnection.Connect(_connectionString);
             var cachebuilder = new CacheBuilder<string, UserPacked>(ICache._key, gridConnection)
                 .SetSerialization(Serialize, Deserialize);
-
         }
+        
         public Task AddValue(UserPacked data)
         {
-            var key = BuildKey(data.Id);
+            var key = BuildKey(data.Id, data.Size);
             return cache.AddAsync(key, data);
         }
 
-        public async Task<UserPacked?> GetValue(int id)
+        public async Task<UserPacked?> GetValue(int id, int size)
         {
-            var key = BuildKey(id);
+            var key = BuildKey(id, size);
             var response = await cache.ReadAsync(key);
             return response.Result == ServerResult.Retrieved ? response.Value : null;
         }
@@ -43,6 +43,6 @@ namespace MutliCacheCompare
             binaryWriter.Write(bytes, 0, bytes.Length);
         }
 
-        public string BuildKey(int key) => $"{ICache._key}.{key}";
+        public string BuildKey(int key, int size) => $"{ICache._key}.{size}.{key}";
     }
 }
