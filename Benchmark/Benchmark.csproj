@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiCacheCompare\MultiCacheCompare.csproj" />
+    <Compile Remove="Images\2024-10-21\**" />
+    <EmbeddedResource Remove="Images\2024-10-21\**" />
+    <None Remove="Images\2024-10-21\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\2024-10-21\" />
+    <ProjectReference Include="..\MultiCacheCompare\MultiCacheCompare.csproj" />
   </ItemGroup>
 
 </Project>
