@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MutliCacheCompare\MutliCacheCompare.csproj" />
+    <ProjectReference Include="..\MutliCacheCompare\MultiCacheCompare.csproj" />
   </ItemGroup>
 
 </Project>
