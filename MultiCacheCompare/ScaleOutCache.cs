@@ -6,13 +6,14 @@ namespace MutliCacheCompare
 {
     public class ScaleOutCache : ICache
     {
-        const string _connectionString = "";
+        const string _connectionString = "bootstrapGateways=10.1.0.5:4721";
         Cache<string, UserPacked> cache;
         public ScaleOutCache()
         {
             var gridConnection = GridConnection.Connect(_connectionString);
             var cachebuilder = new CacheBuilder<string, UserPacked>(ICache._key, gridConnection)
                 .SetSerialization(Serialize, Deserialize);
+            cache = cachebuilder.Build();
         }
         
         public Task AddValue(UserPacked data)

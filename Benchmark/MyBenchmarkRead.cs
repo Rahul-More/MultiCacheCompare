@@ -9,12 +9,14 @@ namespace Benchmark
     {
         private readonly ICache redis;
         private readonly ICache garnet;
+        private readonly ICache scaleout;
         int randomKey;
 
         public MyBenchmarkRead()
         {
             redis = new RedisCache();
             garnet = new GarnetRedisClientCache();
+            scaleout = new ScaleOutCache();
             randomKey = new Random().Next(0, 1_00_000);
         }
 
@@ -41,6 +43,18 @@ namespace Benchmark
 
         [Benchmark]
         public async Task<UserPacked?> Redis4096() => await redis.GetValue(randomKey, 4096);
+        
+        [Benchmark]
+        public async Task<UserPacked?> ScaleOut200() => await scaleout.GetValue(randomKey, 200);
+
+        [Benchmark]
+        public async Task<UserPacked?> ScaleOut1024() => await scaleout.GetValue(randomKey, 1024);
+
+        [Benchmark]
+        public async Task<UserPacked?> ScaleOut2048() => await scaleout.GetValue(randomKey, 2048);
+
+        [Benchmark]
+        public async Task<UserPacked?> ScaleOut4096() => await scaleout.GetValue(randomKey, 4096);
 
     }
 }

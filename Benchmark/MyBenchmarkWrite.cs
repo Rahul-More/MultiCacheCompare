@@ -10,6 +10,7 @@ namespace Benchmark
         static char[] alphabet = "abcdefghijklmnopqrstuvwxyz1324567890".ToCharArray();
         public readonly ICache redis;
         public readonly ICache garnet;
+        public readonly ICache scaleout;
         public readonly UserPacked User200;
         public readonly UserPacked User1024;
         public readonly UserPacked User2048;
@@ -20,6 +21,7 @@ namespace Benchmark
         {
             redis = new RedisCache();
             garnet = new GarnetRedisClientCache();
+            scaleout = new ScaleOutCache();
 
             User200 = new UserPacked
             {
@@ -89,6 +91,18 @@ namespace Benchmark
 
         [Benchmark]
         public async Task Redis4096() => await redis.AddValue(User4096);
+        
+        [Benchmark]
+        public async Task ScaleOut200() => await scaleout.AddValue(User2048);
+
+        [Benchmark]
+        public async Task ScaleOut1024() => await scaleout.AddValue(User4096);
+
+        [Benchmark]
+        public async Task ScaleOut2048() => await scaleout.AddValue(User2048);
+
+        [Benchmark]
+        public async Task ScaleOut4096() => await scaleout.AddValue(User4096);
 
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Timers;
+﻿using MutliCacheCompare;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-namespace MutliCacheCompare
+
+namespace MultiCacheCompare
 {
     internal class Program
     {
@@ -15,7 +14,7 @@ namespace MutliCacheCompare
             ICache redis = new RedisCache();
             ICache garnetrc = new GarnetRedisClientCache();
             //ICache garnetgc = new GarnetCache();
-            //ICache scaleout = new ScaleOutCache();
+            ICache scaleout = new ScaleOutCache();
 
             var sizes = new[] { Data(200), Data(1024), Data(2048), Data(4096) };
             var stopwatch = new Stopwatch();
@@ -36,7 +35,7 @@ namespace MutliCacheCompare
                     await redis.AddValue(user);
                     //await garnetgc.AddValue(user);
                     await garnetrc.AddValue(user);
-                    //await scaleout.AddValue(user);
+                    await scaleout.AddValue(user);
 
                 }
                 Console.Clear();
