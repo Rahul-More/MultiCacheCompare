@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiCacheCompare", "MutliCacheCompare\MultiCacheCompare.csproj", "{5CC5BBD5-BEA4-46E0-9C20-9B356AB0775D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiCacheCompare", "MultiCacheCompare\MultiCacheCompare.csproj", "{5CC5BBD5-BEA4-46E0-9C20-9B356AB0775D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmark", "Benchmark\Benchmark.csproj", "{5B2EB64F-2916-412C-8AD4-28355EE36386}"
 EndProject
