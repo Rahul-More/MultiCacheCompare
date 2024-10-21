@@ -11,4 +11,8 @@
     <ProjectReference Include="..\MultiCacheCompare\MultiCacheCompare.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\2024-10-21\" />
+  </ItemGroup>
+
 </Project>

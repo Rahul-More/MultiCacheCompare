@@ -9,4 +9,11 @@
 ##
 # Results - Garner vs Redis (Sample)
 
-![alt](Images/Screenshot%202024-10-20%20173024.png)
+## Read Operation on AMD Machine
+![alt](Images/AMD/ReadOps.png)
+
+## Write Operation on AMD Machine
+![alt](Images/AMD/WriteOps.png)
+
+## Read Operation on Intel Machine
+![alt](Images/Intel/ReadOps.png)
